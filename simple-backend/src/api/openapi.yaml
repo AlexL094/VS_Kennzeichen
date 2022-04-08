@@ -1,0 +1,658 @@
+openapi: 3.0.0
+info:
+  title: Kennzeichen
+  description: Miau
+  version: "1.0"
+servers:
+- url: http://localhost:4000
+tags:
+- name: Index
+- name: Ortskennung
+- name: Bewertung
+paths:
+  /:
+    get:
+      tags:
+      - Index
+      summary: Wurzeladresse des Webservices
+      description: Liefert eine HATEOAS-Übersicht aller collections
+      operationId: index
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HATEOAS_Collection'
+                x-content-type: application/json
+
+ 
+  /ortskennung:
+    get:
+      tags:
+      - Ortskennung
+      summary: ortskennungn suchen
+      description: Suche nach ortskennungn. Gibt eine Liste aller ortskennungn passend zu
+        den übergebenen Suchkriterien zurück.
+      operationId: search-ortskennung
+      parameters:
+      - name: ortskürzel
+        in: query
+        description: Ortskürzel
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: landkreis
+        in: query
+        description: landkreis
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ortskennung'
+                x-content-type: application/json
+    post:
+      tags:
+      - Ortskennung
+      summary: ortskennung anlegen
+      description: "Neue ortskennung anlegen. Speichert die übergebene ortskennung in der\
+        \ Datenbank. Der Wert des Feldes \"_id\" wird dabei ignoriert, da in jedem Fall\
+        \ eine neue ortskennung mit neuer ID angelegt wird."
+      operationId: create-ortskennung
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ortskennung'
+      responses:
+        "201":
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ortskennung'
+  /ortskennung/{id}:
+    get:
+      tags:
+      - Ortskennung
+      summary: ortskennung lesen
+      description: Liest eine einzelne ortskennung vom Server.
+      operationId: get-ortskennung
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ortskennung'
+        "404":
+          description: Not Found
+    put:
+      tags:
+      - Ortskennung
+      summary: ""
+      description: "Überschreibt eine vorhandene ortskennung auf dem Server. Bis auf die\
+        \ ID können alle Felder geändert werden. Der Versuch, die ID zu ändern, wird\
+        \ vom Server stillschweigend ignoriert."
+      operationId: update-ortskennung
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ortskennung'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ortskennung'
+        "404":
+          description: Not Found
+    delete:
+      tags:
+      - Ortskennung
+      summary: ortskennung löschen
+      description: Löscht eine ortskennung auf dem Server.
+      operationId: delete-ortskennung
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+    patch:
+      tags:
+      - Ortskennung
+      summary: Einzelne ortskennungfelder ändern
+      description: "Ändert einzelne Felder einer vorhandenen ortskennung. Zulässig sind\
+        \ alle Felder bis auf die ID, da diese nachträglich nicht mehr verändert werden\
+        \ darf."
+      operationId: patch-ortskennung
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ortskennung'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+
+
+
+
+
+
+
+  /bewertung:
+    get:
+      tags:
+      - Bewertung
+      summary: bewertungn suchen
+      description: Suche nach bewertungn. Gibt eine Liste aller bewertungn passend zu
+        den übergebenen Suchkriterien zurück.
+      operationId: search-bewertung
+      parameters:
+      - name: kennzeichen
+        in: query
+        description: Kennzeichen
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: spurhaltung
+        in: query
+        description: Spurhaltung
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bewertung'
+                x-content-type: application/json
+    post:
+      tags:
+      - Bewertung
+      summary: bewertung anlegen
+      description: "Neue bewertung anlegen. Speichert die übergebene bewertung in der\
+        \ Datenbank. Der Wert des Feldes \"_id\" wird dabei ignoriert, da in jedem Fall\
+        \ eine neue bewertung mit neuer ID angelegt wird."
+      operationId: create-bewertung
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bewertung'
+      responses:
+        "201":
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bewertung'
+  /bewertung/{id}:
+    get:
+      tags:
+      - Bewertung
+      summary: bewertung lesen
+      description: Liest eine einzelne bewertung vom Server.
+      operationId: get-bewertung
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bewertung'
+        "404":
+          description: Not Found
+    put:
+      tags:
+      - Bewertung
+      summary: ""
+      description: "Überschreibt eine vorhandene bewertung auf dem Server. Bis auf die\
+        \ ID können alle Felder geändert werden. Der Versuch, die ID zu ändern, wird\
+        \ vom Server stillschweigend ignoriert."
+      operationId: update-bewertung
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bewertung'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bewertung'
+        "404":
+          description: Not Found
+    delete:
+      tags:
+      - Bewertung
+      summary: bewertung löschen
+      description: Löscht eine bewertung auf dem Server.
+      operationId: delete-bewertung
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+    patch:
+      tags:
+      - Bewertung
+      summary: Einzelne bewertungfelder ändern
+      description: "Ändert einzelne Felder einer vorhandenen bewertung. Zulässig sind\
+        \ alle Felder bis auf die ID, da diese nachträglich nicht mehr verändert werden\
+        \ darf."
+      operationId: patch-bewertung
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bewertung'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /tuev:
+    get:
+      tags:
+      - Tuev
+      summary: tuevn suchen
+      description: Suche nach tuevn. Gibt eine Liste aller tuevn passend zu
+        den übergebenen Suchkriterien zurück.
+      operationId: search-tuev
+      parameters:
+      - name: kennzeichen
+        in: query
+        description: Kennzeichen
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: ort
+        in: query
+        description: Ort
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tuev'
+                x-content-type: application/json
+    post:
+      tags:
+      - Tuev
+      summary: tuev anlegen
+      description: "Neue tuev anlegen. Speichert die übergebene tuev in der\
+        \ Datenbank. Der Wert des Feldes \"_id\" wird dabei ignoriert, da in jedem Fall\
+        \ eine neue tuev mit neuer ID angelegt wird."
+      operationId: create-tuev
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tuev'
+      responses:
+        "201":
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tuev'
+  /tuev/{id}:
+    get:
+      tags:
+      - Tuev
+      summary: tuev lesen
+      description: Liest eine einzelne tuev vom Server.
+      operationId: get-tuev
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tuev'
+        "404":
+          description: Not Found
+    put:
+      tags:
+      - Tuev
+      summary: ""
+      description: "Überschreibt eine vorhandene tuev auf dem Server. Bis auf die\
+        \ ID können alle Felder geändert werden. Der Versuch, die ID zu ändern, wird\
+        \ vom Server stillschweigend ignoriert."
+      operationId: update-tuev
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tuev'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tuev'
+        "404":
+          description: Not Found
+    delete:
+      tags:
+      - Tuev
+      summary: tuev löschen
+      description: Löscht eine tuev auf dem Server.
+      operationId: delete-tuev
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+    patch:
+      tags:
+      - Tuev
+      summary: Einzelne tuevfelder ändern
+      description: "Ändert einzelne Felder einer vorhandenen tuev. Zulässig sind\
+        \ alle Felder bis auf die ID, da diese nachträglich nicht mehr verändert werden\
+        \ darf."
+      operationId: patch-tuev
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tuev'
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+
+
+
+
+
+
+
+
+
+
+
+components:
+  schemas:
+    HATEOAS_Collection:
+      title: HATEOAS-Links einer Collection
+      type: object
+      properties:
+        _name:
+          type: string
+        query:
+          $ref: '#/components/schemas/HATEOAS_Link'
+        create:
+          $ref: '#/components/schemas/HATEOAS_Link'
+
+    HATEOAS_Resource:
+      title: HATEOAS-Links einer Resource
+      type: object
+      properties:
+        read:
+          $ref: '#/components/schemas/HATEOAS_Link'
+        update:
+          $ref: '#/components/schemas/HATEOAS_Link'
+        patch:
+          $ref: '#/components/schemas/HATEOAS_Link'
+        delete:
+          $ref: '#/components/schemas/HATEOAS_Link'
+
+    HATEOAS_Link:
+      title: HATEOAS-Link
+      type: object
+      properties:
+        url:
+          type: string
+        method:
+          type: string
+
+    Ortskennung:
+      title: Ortskennung
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/HATEOAS_Resource'
+        _id:
+          type: string
+        ortskürzel:
+          type: string
+        landkreis:
+          type: string
+        bundesland:
+          type: string
+      required:
+        - ortskürzel
+        - landkreis
+      example:
+        _id: "621ff9a936997df5baba746e"
+        ortskürzel: "FRG"
+        landkreis: "Frayung"
+        bundesland: "Bayern"
+        
+    Bewertung:
+      title: Ortskennung
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/HATEOAS_Resource'
+        _id:
+          type: string
+        kennzeichen:
+          type: string
+        spurhaltung:
+          type: integer
+        verhalten:
+          type: integer
+        anmerkungen:
+          type: string
+      example:
+        _id: "621ff9a936997df5baba746e"
+        kennzeichen: "FRG"
+        spurhaltung: 1
+        verhalten: 1
+        anmerkungen: "Bayern"
+
+    Tuev:
+      title: Tuev
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/HATEOAS_Resource'
+        _id:
+          type: string
+        kennzeichen:
+          type: string
+        ort:
+          type: string
+        pruefer:
+          type: string
+        gueltigBis:
+          type: string
+        letztePrüfung:
+          type: string
+      example:
+        _id: "621ff9a936997df5baba746e"
+        kennzeichen: "KA-1"
+        ort: "Karlsruhe"
+        pruefer: "Maxmustermann"
+        gueltigBis: "2024-04-12T23:20:50.52Z"
+        letztePrüfung : " 2022-04-12T23:20:50.52Z"
+  securitySchemes: {}
