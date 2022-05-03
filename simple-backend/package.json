@@ -1,22 +1,19 @@
 {
-  "name": "kennzeichen-backend",
+  "name": "api_examples",
   "version": "1.0.0",
-  "description": "Kennzeichen: Backend",
-  "author": "",
-  "co-authored by" : "Kilian Soerries, Alexander Lamers, Moritz Wolf",
-  "main": "src/index.js",
+  "description": "",
   "type": "module",
-
-
   "scripts": {
     "start": "nodemon -L src/index.js",
     "d-up": "docker-compose up --build"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@dschulmeis/restify-openapi-enforcer-middleware": "^1.0.2",
-    "mongodb": "^4.4.0",
-    "openapi-enforcer": "^1.17.0",
-    "restify": "^8.6.1"
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "mongoose": "^6.2.4",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

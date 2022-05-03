@@ -1,8 +1,0 @@
-# dependencies
-node_modules
-
-# ide settings
-.vscode
-
-# db logs
-.db

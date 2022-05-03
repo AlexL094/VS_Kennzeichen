@@ -1,115 +1,36 @@
-"use strict"
+import express from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
 
-import restify from "restify";
-import OpenApiEnforcer from "openapi-enforcer";
-import OpenApiEnforcerMiddleware from "@dschulmeis/restify-openapi-enforcer-middleware";
+import bewertungRoutes from "./routes/bewertungRoutes.js";
+import ortskennungRoutes from "./routes/ortskennungRouter.js";
+import tuevRoutes from "./routes/tuevRouter.js";
 
-import DatabaseFactory from "./database.js";
-import RootController from "./controller/root.controller.js";
-import OrtskennungController from "./controller/ortskennung.controller.js";
-import BewertungController from "./controller/bewertung.controller.js"
-import TuevController from "./controller/tuev.controller.js"
 
-// Verzeichnisnamen der Quellcodedatei ermitteln
-import path from "path";
-import { fileURLToPath } from "url";
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-/* =============================================================================
- * SERVER-KONFIGURATION
- * =============================================================================*/
+// complete application is here
+const app = express();
+const port = 4000;
 
-// Auslesen der Umgebungsvariablen zur Konfiguration des Servers
-const config = {
-    port:    parseInt(process.env.PORT) || 4000,
-    host:    process.env.HOST           || "localhost",
-    mongodb: process.env.MONGODB        || "mongodb://localhost:27017",
-};
+// app uses json
+app.use(bodyParser.json());
 
-await DatabaseFactory.init(config.mongodb);
+// only book routes and documentation is valid
+// everything else throws a 404
+app.use("/bewertung", bewertungRoutes);
+app.use("/ortskennung", ortskennungRoutes);
+app.use("/tuev", tuevRoutes);
 
-/* =============================================================================
- * SERVER STARTEN
- * =============================================================================*/
-const server = restify.createServer({
-    // Bei Bedarf notwendige Serverkonfiguration hier erweitern.
-    // Vgl. http://restify.com/docs/server-api/#createserver
+
+
+
+app.all("*", (req, res) => res.sendStatus(404));
+
+// connect to database
+mongoose.connect("mongodb://mongo:27017/test").then(() => {
+  console.log("Database connected");
 });
 
-server.use(restify.plugins.acceptParser(server.acceptable));
-server.use(restify.plugins.authorizationParser());
-server.use(restify.plugins.dateParser());
-server.use(restify.plugins.queryParser());
-server.use(restify.plugins.jsonp());
-server.use(restify.plugins.gzipResponse());
-server.use(restify.plugins.bodyParser());
-server.use(restify.plugins.throttle({burst: 100, rate: 50, ip: true}));
-server.use(restify.plugins.conditionalRequest());
-
-// Protokollzeile für jede HTTP-Anfrage auf der Konsole ausgeben
-server.pre((req, res, next) => {
-    console.log(new Date(), req.method, req.url, `HTTP ${req.httpVersion}`);
-    return next();
-});
-
-// Exceptions ebenfalls auf der Konsole protokollieren, um die betroffene
-// Quellcodestelle identifizieren zu können.
-server.on("restifyError", function(req, res, err, callback) {
-    console.error(`${err.stack}\n`);
-    return callback();
-});
-
-// CORS-Header setzen, um Zugriffe von anderen URLs außer der Backend-URL zuzulassen.
-// Außerdem OPTIONS-Anfragen (sog. CORS-Preflight) immer mit Status 200 beantworten,
-// damit die Browser ändernde Aufrufe tatsächlich durchführen.
-server.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", req.header("Access-Control-Request-Method"));
-    res.header("Access-Control-Allow-Headers", req.header("Access-Control-Request-Headers"));
-    return next();
-});
-
-server.opts("*", (req, res, next) => {
-    res.status(200);
-    res.send({});
-    next();
-});
-
-// Anfragen und Antworten gegen die OpenAPI-Spezifikation prüfen und dabei
-// fehlerhafte Anfragen oder Antworten mit einer Exception ablehnen.
-const openApiFile = path.relative("", path.join(__dirname, "api", "openapi.yaml"));
-const openApiValidation = await OpenApiEnforcer(openApiFile, {fullResult: true});
-
-const openApiEnforcer = await OpenApiEnforcer(openApiFile, {
-    hideWarnings: true,
-    componentOptions: {
-        production: process.env.NODE_ENV === "production"
-    },
-});
-
-server.use(OpenApiEnforcerMiddleware(openApiEnforcer));
-
-// HTTP-Controller registrieren
-new RootController(server, "/");
-new OrtskennungController(server, "/ortskennung");
-new BewertungController(server, "/bewertung");
-new TuevController(server, "/tuev");
-
-// Server tatsächlich starten
-server.listen(config.port, config.host, function() {
-
-    console.log();
-    console.log(config);
-
-    console.log(`OpenAPI-Spezifikation: ${openApiFile}`)
-
-    if (openApiValidation.error) {
-        console.error(`${openApiValidation.error}\n`);
-    }
-
-    if (openApiValidation.warning) {
-        console.warn(`${openApiValidation.warning}\n`);
-    }
-
-    console.log();
+app.listen(port, () => {
+  console.log(`Server running on: http://localhost:${port}`);
 });

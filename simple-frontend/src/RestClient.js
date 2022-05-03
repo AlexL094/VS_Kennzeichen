@@ -7,7 +7,6 @@ export async function fetchAllBooks() {
   })
     .then((res) => {
       return res.json();
-
     })
     .then((res) => {
       return res;

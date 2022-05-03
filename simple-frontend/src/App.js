@@ -16,7 +16,6 @@ class App extends React.Component {
   // as a state
   async fetchDisplayData() {
     let data = await fetchAllBooks();
-    console.log(data)
     this.setState({ books: data });
   }
 
@@ -24,15 +23,15 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div id="title">Ortskennungen </div>
+        <div id="title">Kennzeichen 📚📚 </div>
         <button id="fetcher" onClick={this.fetchDisplayData}>
-          Check out what's in store
+          Check out what's in the Database
         </button>
         <div className="data">
           {/* generates a div for every entry */}
-          {this.state.books.map((book, key) => (
+          {this.state.books.map((ortskennung, key) => (
             <div key={key}>
-              {book.ortskürzel} steht für  {book.landkreis} und ist in {book.bundesland}
+               {ortskennung.ortskürzel} gehört zu {ortskennung.landkreis} und liegt {ortskennung.bundesland}
             </div>
           ))}
         </div>
