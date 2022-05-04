@@ -1,13 +1,30 @@
-# Example REST API Book Service 📚 📚 
+# Der Kennzeichen API Service 
 
 ### Run `npm run d-up` to start server and MongoDB
 
 ## API calls
 
-- GET /books
-- GET /books/{id}
-- GET /books/search?name={name}
-- POST /books
+
+- GET /bewertung
+- GET /bewertung/{id}
+- GET /bewertung/search?name={name}
+- PUT /bewertung/put/{id}
+- POST /bewertung/add
+- DELETE /bewertung/delete/{id}
+
+- GET /tuev
+- GET /tuev/{id}
+- GET /tuev/search?name={name}
+- PUT /tuev/put/{id}
+- POST /tuev/add
+- DELETE /tuev/delete/{id}
+
+- GET /ortskennung
+- GET /ortskennung/{id}
+- GET /ortskennung/search?name={name}
+- PUT /ortskennung/put/{id}
+- POST /ortskennung/add
+- DELETE /ortskennung/delete/{id}
 
 <span style="color:blue"> -> Go to localhost:300/api for documentation </span>
 

@@ -103,18 +103,21 @@ export const putOrtskennung = async (req, res) => {
 
 
 export const putOrtskennungValidators = [
-  check("ortskürzel").notEmpty().withMessage("Title field required"),
-  check("landkreis").notEmpty().withMessage("Author field required"),
+  check("ortskürzel").notEmpty().withMessage("ortskürzel field required"),
+  check("landkreis").notEmpty().withMessage("landkreis field required"),
   check("bundesland").notEmpty().withMessage("bundesland field required"),
 
   check("ortskürzel").isString().withMessage("ortskürzel must be a String required"),
-  check("landkreis").isString().withMessage("ortskürzel must be a String required"),
+  check("landkreis").isString().withMessage("landkreis must be a String required"),
   check("bundesland").isString().withMessage("bundesland must be a String required"),
 
 
   check("ortskürzel").isLength({min:1}).withMessage("Minimum Length ortskürzel did not match"),
   check("landkreis").isLength({min:1}).withMessage("Minimum Length landkreis did not match"),
   check("bundesland").isLength({min:1}).withMessage("Minimum Length bundesland did not match"),
+
+  check("ortskürzel").isLength({max:4}).withMessage("Maximum Length ortskürzel did not match"),
+
 
 ];
 
@@ -131,4 +134,8 @@ export const newOrtskennungValidators = [
   check("ortskürzel").isLength({min:1}).withMessage("Minimum Length ortskürzel did not match"),
   check("landkreis").isLength({min:1}).withMessage("Minimum Length landkreis did not match"),
   check("bundesland").isLength({min:1}).withMessage("Minimum Length bundesland did not match"),
+
+
+  check("ortskürzel").isLength({max:4}).withMessage("Maximum Length ortskürzel did not match"),
+
 ];

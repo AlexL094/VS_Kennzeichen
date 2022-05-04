@@ -108,35 +108,38 @@ export const putBewertung = async (req, res) => {
 // Validators for Body
 
 export const putBewertungValidators = [
-  check("kennzeichen").notEmpty().withMessage("Title field required"),
-  check("anmerkungen").notEmpty().withMessage("Author field required"),
+  check("kennzeichen").notEmpty().withMessage("kennzeichen field required"),
+  check("anmerkungen").notEmpty().withMessage("anmerkungen field required"),
   check("spurhaltung").notEmpty().withMessage("Spurhaltung field required"),
-  check("verhalten").notEmpty().withMessage("Spurhaltung field verhalten"),
+  check("verhalten").notEmpty().withMessage("verhalten field verhalten required"),
   check("authorVonBewertung").notEmpty().withMessage("authorVonBewertung field required"),
 
   check("kennzeichen").isString().withMessage("kennzeichen must be a String required"),
-  check("anmerkungen").isString().withMessage("kennzeichen must be a String required"),
+  check("anmerkungen").isString().withMessage("anmerkungen must be a String required"),
+  check("authorVonBewertung").notEmpty().withMessage("authorVonBewertung must be a String required"),
+
 
   check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
   check("anmerkungen").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
 
-  check("kennzeichen").isLength({max:10}).withMessage("Minimum Length anmerkungen did not match"),
+  check("kennzeichen").isLength({max:11}).withMessage("Maximum Length kennzeichen did not match"),
 
 ];
 
 export const newBewertungValidators = [
-    check("kennzeichen").notEmpty().withMessage("Title field required"),
-    check("anmerkungen").notEmpty().withMessage("Author field required"),
-    check("spurhaltung").notEmpty().withMessage("Spurhaltung field required"),
-    check("verhalten").notEmpty().withMessage("Spurhaltung field verhalten"),
-    check("authorVonBewertung").notEmpty().withMessage("authorVonBewertung field required"),
-  
-    check("kennzeichen").isString().withMessage("kennzeichen must be a String required"),
-    check("anmerkungen").isString().withMessage("kennzeichen must be a String required"),
-  
-    check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
-    check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
+  check("kennzeichen").notEmpty().withMessage("kennzeichen field required"),
+  check("anmerkungen").notEmpty().withMessage("anmerkungen field required"),
+  check("spurhaltung").notEmpty().withMessage("Spurhaltung field required"),
+  check("verhalten").notEmpty().withMessage("verhalten field verhalten required"),
+  check("authorVonBewertung").notEmpty().withMessage("authorVonBewertung field required"),
 
-    check("kennzeichen").isLength({max:11}).withMessage("Minimum Length anmerkungen did not match"),
-    // Sonder Kennzeichen werden berücksichtigt
+  check("kennzeichen").isString().withMessage("kennzeichen must be a String required"),
+  check("anmerkungen").isString().withMessage("anmerkungen must be a String required"),
+  check("authorVonBewertung").notEmpty().withMessage("authorVonBewertung must be a String required"),
+
+
+  check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
+  check("anmerkungen").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
+
+  check("kennzeichen").isLength({max:11}).withMessage("Maximum Length kennzeichen did not match"),
 ];

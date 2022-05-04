@@ -17,8 +17,26 @@ backend connection via fetch.
 - backend: `cd simple-backend && npm run start`
 - all containers (frontend, backend, mongo): `cd simple-backend && npm run d-up`
 
+- GET /bewertung
+- GET /bewertung/{id}
+- GET /bewertung/search?name={name}
+- PUT /bewertung/put/{id}
+- POST /bewertung/add
+- DELETE /bewertung/delete/{id}
 
+- GET /tuev
+- GET /tuev/{id}
+- GET /tuev/search?name={name}
+- PUT /tuev/put/{id}
+- POST /tuev/add
+- DELETE /tuev/delete/{id}
 
+- GET /ortskennung
+- GET /ortskennung/{id}
+- GET /ortskennung/search?name={name}
+- PUT /ortskennung/put/{id}
+- POST /ortskennung/add
+- DELETE /ortskennung/delete/{id}
 
 Wir haben die Gesamte Dokumentation in YAML erstellt.
 

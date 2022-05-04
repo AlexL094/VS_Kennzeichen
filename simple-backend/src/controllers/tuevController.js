@@ -123,7 +123,7 @@ export const putTuevValidators = [
   check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
   check("ort").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
 
-  check("kennzeichen").isLength({max:11}).withMessage("Minimum Length anmerkungen did not match"),
+  check("kennzeichen").isLength({max:11}).withMessage("Minimum Length kennzeichen did not match"),
 
 ];
 
@@ -143,5 +143,5 @@ export const newTuevValidators = [
   check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
   check("ort").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
 
-  check("kennzeichen").isLength({max:11}).withMessage("Minimum Length anmerkungen did not match"),
+  check("kennzeichen").isLength({max:11}).withMessage("Minimum Length kennzeichen did not match"),
 ];
