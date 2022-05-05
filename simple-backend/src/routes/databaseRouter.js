@@ -6,7 +6,7 @@ import {
 
 const router = express.Router();
 
-
+// Die verschiedenen CRUD Operations
 router.post("/add", addInitialData);
 router.delete("/delete", deleteAllData);
 

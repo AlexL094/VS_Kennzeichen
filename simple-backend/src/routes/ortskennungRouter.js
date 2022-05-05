@@ -12,6 +12,7 @@ import {
 
 const router = express.Router();
 
+// Die verschiedenen CRUD Operations
 router.get("/", getOrtskennung);
 router.get("/search", getOrtskennungByOrtskürzel);
 router.get("/:id", getOrtskennungById);

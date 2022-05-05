@@ -62,7 +62,7 @@ export const deleteTuev = async (req, res) => {
   }
 };
 
-// Delete put a Tuev by id
+// Put a Tuev by id
 
 export const putTuev = async (req, res) => {
 

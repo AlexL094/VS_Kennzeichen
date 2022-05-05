@@ -4,24 +4,36 @@
 
 ## API calls
 
+_______________________________________________________________________
+
+# Um die Datenbank initial zu befüllen, kann der folgende Befehl ausgeführt werden
+- POST /database/add
+ 
+# Um die gesamte Datenbank zu löschen, kann der folgende Befehl ausgeführt werden. 
+
+# !!!!!! Achtung alle Daten aus allen Collections werden unwiderruflich gelöscht !!!!!!
+- DELETE /database/delete
+# !!!!!! Achtung alle Daten aus allen Collections werden unwiderruflich gelöscht !!!!!!
+_______________________________________________________________________
+
 
 - GET /bewertung
 - GET /bewertung/{id}
-- GET /bewertung/search?name={name}
+- GET /bewertung/search?kennzeichen={kennzeichen}
 - PUT /bewertung/put/{id}
 - POST /bewertung/add
 - DELETE /bewertung/delete/{id}
 
 - GET /tuev
 - GET /tuev/{id}
-- GET /tuev/search?name={name}
+- GET /tuev/search?kennzeichen={kennzeichen}
 - PUT /tuev/put/{id}
 - POST /tuev/add
 - DELETE /tuev/delete/{id}
 
 - GET /ortskennung
 - GET /ortskennung/{id}
-- GET /ortskennung/search?name={name}
+- GET /ortskennung/search?ortskürzel={ortskürzel}
 - PUT /ortskennung/put/{id}
 - POST /ortskennung/add
 - DELETE /ortskennung/delete/{id}

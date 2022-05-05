@@ -12,8 +12,7 @@ import {
 
 const router = express.Router();
 
-
-
+// Die verschiedenen CRUD Operations
 router.get("/", getBewertung);
 router.get("/search", getBewertungByKennzeichen);
 router.get("/:id", getBewertungById);

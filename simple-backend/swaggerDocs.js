@@ -48,9 +48,9 @@ const swaggerDocs = {
           summary: "Get a specific Ortskennung by id",
           parameters: [
             {
-              name: "id",
-              in: "body",
-              description: "Id of the Ortskennung searched for",
+              name: "ortskürzel",
+              in: "path",
+              description: "ortskürzel of the Ortskennung searched for",
               schema: {
                 $ref: "#/definitions/Ortskennung",
               },
@@ -59,6 +59,12 @@ const swaggerDocs = {
           responses: {
             200: {
               description: "OK",
+              schema: {
+                $ref: "#/definitions/Ortskennung",
+              },
+            },
+            400: {
+              description: "Bad Request something went wrong",
               schema: {
                 $ref: "#/definitions/Ortskennung",
               },
@@ -144,7 +150,7 @@ const swaggerDocs = {
               },
             },
             400: {
-              description: "Bad Request",
+              description: "Bad Request something went wrong",
               schema: {
                 $ref: "#/definitions/Ortskennung",
               },
@@ -205,7 +211,7 @@ const swaggerDocs = {
           parameters: [
             {
               name: "id",
-              in: "body",
+              in: "path",
               description: "Id of the Bewertung searched for",
               schema: {
                 $ref: "#/definitions/Bewertung",
@@ -362,7 +368,7 @@ const swaggerDocs = {
           parameters: [
             {
               name: "id",
-              in: "body",
+              in: "path",
               description: "Id of the Tuev searched for",
               schema: {
                 $ref: "#/definitions/Tuev",

@@ -13,7 +13,7 @@ import {
 const router = express.Router();
 
 
-
+// Die verschiedenen CRUD Operations
 router.get("/", getTuev);
 router.get("/search", getTuevByKennzeichen);
 router.get("/:id", getTuevById);

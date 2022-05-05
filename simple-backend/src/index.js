@@ -3,8 +3,6 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import swaggerUi from "swagger-ui-express";
 
-
-
 import bewertungRoutes from "./routes/bewertungRoutes.js";
 import ortskennungRoutes from "./routes/ortskennungRouter.js";
 import tuevRoutes from "./routes/tuevRouter.js";
@@ -12,18 +10,13 @@ import databaseRoutes from "./routes/databaseRouter.js";
 import swaggerDocs from "../swaggerDocs.js";
 
 
-// Das ist für die initiale befüllung der Datenbank
-//instertOrtskennung();
-//instertBewertungen();
-//instertTuev();
-
 // complete application is here
 const app = express();
 const port = 4000;
-//C:\Users\mwolf\Documents\DHBW\Semester 4\Verleilte Systeme\Repo_Kennzeichen\VS_Kennzeichen\simple-backend\src\models\ortskennungModal.js
 // app uses json
 app.use(bodyParser.json());
 
+// Die Routes zum den Nodes 
 app.use("/bewertung", bewertungRoutes);
 app.use("/ortskennung", ortskennungRoutes);
 app.use("/tuev", tuevRoutes);

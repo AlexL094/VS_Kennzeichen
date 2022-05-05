@@ -60,7 +60,7 @@ export const deleteOrtskennung = async (req, res) => {
   }
 };
 
-// Delete put a Ortskennung by id
+// Put a Ortskennung by id
 
 export const putOrtskennung = async (req, res) => {
 

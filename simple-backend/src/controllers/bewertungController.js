@@ -30,7 +30,6 @@ export const getBewertungByKennzeichen = async (req, res) => {
 
 // Add a Bewertung
 
-
 export const addBewertung = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -62,20 +61,17 @@ export const deleteBewertung = async (req, res) => {
   }
 };
 
-// Delete put a Bewertung by id
+// Put a Bewertung by id
 
 export const putBewertung = async (req, res) => {
 
   if(req.params.id.length != 24){
     res.status(400).send({error: 'Invalid id'});
   }else{
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
-    
     const bewertung = await Bewertung.findById(req.params.id);
     if(bewertung != null){
       let newPutBewertung = new Bewertung({
@@ -118,7 +114,6 @@ export const putBewertungValidators = [
   check("anmerkungen").isString().withMessage("anmerkungen must be a String required"),
   check("authorVonBewertung").notEmpty().withMessage("authorVonBewertung must be a String required"),
 
-
   check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
   check("anmerkungen").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
 
@@ -136,7 +131,6 @@ export const newBewertungValidators = [
   check("kennzeichen").isString().withMessage("kennzeichen must be a String required"),
   check("anmerkungen").isString().withMessage("anmerkungen must be a String required"),
   check("authorVonBewertung").notEmpty().withMessage("authorVonBewertung must be a String required"),
-
 
   check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
   check("anmerkungen").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
