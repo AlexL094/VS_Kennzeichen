@@ -1,37 +1,37 @@
 import React from "react";
-import { fetchAllBooks } from "./RestClient";
+import { fetchAllOrtskennung } from "./RestClient";
 class App extends React.Component {
   // constructor initializes component state data
   // and binds methods
   constructor(props) {
     super(props);
     this.state = {
-      books: [],
+      ortskennung: [],
     };
     this.fetchDisplayData = this.fetchDisplayData.bind(this);
   }
 
   // requests and waits for data by calling RestClient's
-  // fetchAllBooks. as soon as the data is there it is set
+  // fetchAllOrtskennung. as soon as the data is there it is set
   // as a state
   async fetchDisplayData() {
-    let data = await fetchAllBooks();
-    this.setState({ books: data });
+    let data = await fetchAllOrtskennung();
+    this.setState({ ortskennung: data });
   }
 
   // this is displayed on the screen
   render() {
     return (
       <div>
-        <div id="title">Kennzeichen 📚📚 </div>
+        <div id="title">Ortskennung </div>
         <button id="fetcher" onClick={this.fetchDisplayData}>
-          Check out what's in the Database
+          Anzeigen der Ortskennungen
         </button>
         <div className="data">
           {/* generates a div for every entry */}
-          {this.state.books.map((ortskennung, key) => (
+          {this.state.ortskennung.map((ortskennung, key) => (
             <div key={key}>
-               {ortskennung.ortskürzel} gehört zu {ortskennung.landkreis} und liegt {ortskennung.bundesland}
+               "{ortskennung.ortskürzel}" gehört zu {ortskennung.landkreis} und liegt {ortskennung.bundesland}
             </div>
           ))}
         </div>

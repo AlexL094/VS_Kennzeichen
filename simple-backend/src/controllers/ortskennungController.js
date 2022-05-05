@@ -23,7 +23,7 @@ export const getOrtskennungById = async (req, res) => {
 
 // Return a Ortskennung by ortskürzel
 
-export const getOrtskennungByTitle = async (req, res) => {
+export const getOrtskennungByOrtskürzel = async (req, res) => {
   let result = await Ortskennung.find({ ortskürzel: req.query.ortskürzel });
   res.status(200).send(result);
 };
@@ -122,12 +122,12 @@ export const putOrtskennungValidators = [
 ];
 
 export const newOrtskennungValidators = [
-  check("ortskürzel").notEmpty().withMessage("Title field required"),
-  check("landkreis").notEmpty().withMessage("Author field required"),
+  check("ortskürzel").notEmpty().withMessage("ortskürzel field required"),
+  check("landkreis").notEmpty().withMessage("landkreis field required"),
   check("bundesland").notEmpty().withMessage("bundesland field required"),
 
   check("ortskürzel").isString().withMessage("ortskürzel must be a String required"),
-  check("landkreis").isString().withMessage("ortskürzel must be a String required"),
+  check("landkreis").isString().withMessage("landkreis must be a String required"),
   check("bundesland").isString().withMessage("bundesland must be a String required"),
 
 

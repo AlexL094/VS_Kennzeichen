@@ -7,13 +7,13 @@ import {
   putOrtskennung,
   addOrtskennung,
   deleteOrtskennung,
-  getOrtskennungByTitle,
+  getOrtskennungByOrtskürzel,
 } from "../controllers/ortskennungController.js";
 
 const router = express.Router();
 
 router.get("/", getOrtskennung);
-router.get("/search", getOrtskennungByTitle);
+router.get("/search", getOrtskennungByOrtskürzel);
 router.get("/:id", getOrtskennungById);
 router.put("/put/:id", putOrtskennungValidators, putOrtskennung);
 router.post("/add", newOrtskennungValidators, addOrtskennung);

@@ -1,6 +1,7 @@
 
 # VS_Kennzeichen
-Projekt Kennzeichen | Moritz Wolf, Kilian Sörries, Alexander Lamers
+Projekt Kennzeichen | Kilian Sörries, Alexander Lamers, Moritz Wolf
+
 
 This is an example REST API project built wit Node.js and Express,
 part of a distributed systems lecture @ DHBW Karlsruhe.
@@ -11,11 +12,25 @@ run inside of containers orchestrated via docker-compose.
 The rudimental React frontend application demonstrates a frotend to
 backend connection via fetch.
 
-## Run the app 🚀
+## Run the app 
 
 - frontend: `cd simple-frontend && npm run start`
 - backend: `cd simple-backend && npm run start`
 - all containers (frontend, backend, mongo): `cd simple-backend && npm run d-up`
+
+
+_______________________________________________________________________
+
+# Um die Datenbank initial zu befüllen, kann der folgende Befehl ausgeführt werden
+- POST /database/add
+ 
+# Um die gesamte Datenbank zu löschen, kann der folgende Befehl ausgeführt werden. 
+
+# !!!!!! Achtung alle Daten aus allen Collections werden unwiderruflich gelöscht !!!!!!
+- DELETE /database/delete
+# !!!!!! Achtung alle Daten aus allen Collections werden unwiderruflich gelöscht !!!!!!
+_______________________________________________________________________
+
 
 - GET /bewertung
 - GET /bewertung/{id}

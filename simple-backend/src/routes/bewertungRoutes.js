@@ -7,7 +7,7 @@ import {
   putBewertung,
   addBewertung,
   deleteBewertung,
-  getBewertungByTitle,
+  getBewertungByKennzeichen,
 } from "../controllers/bewertungController.js";
 
 const router = express.Router();
@@ -15,7 +15,7 @@ const router = express.Router();
 
 
 router.get("/", getBewertung);
-router.get("/search", getBewertungByTitle);
+router.get("/search", getBewertungByKennzeichen);
 router.get("/:id", getBewertungById);
 router.put("/put/:id", putBewertungValidators, putBewertung);
 router.post("/add", newBewertungValidators, addBewertung);

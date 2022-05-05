@@ -7,7 +7,7 @@ import {
   putTuev,
   addTuev,
   deleteTuev,
-  getTuevByTitle,
+  getTuevByKennzeichen,
 } from "../controllers/TuevController.js";
 
 const router = express.Router();
@@ -15,7 +15,7 @@ const router = express.Router();
 
 
 router.get("/", getTuev);
-router.get("/search", getTuevByTitle);
+router.get("/search", getTuevByKennzeichen);
 router.get("/:id", getTuevById);
 router.put("/put/:id", putTuevValidators, putTuev);
 router.post("/add", newTuevValidators, addTuev);

@@ -1,6 +1,6 @@
-# Example Book Webpage 📚 📚
+# Kennzeichen Webseite 
 
-Uses GET /Ortskennung from backend service to display all currently saved books on a plain webpage
+Uses GET /Ortskennung from backend service to display all currently saved Ortskennung a plain webpage
 
 ### Run `npm run start` to start frontend server
 

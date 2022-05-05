@@ -23,7 +23,7 @@ export const getBewertungById = async (req, res) => {
 
 // Return a Bewertung by kennzeichen
 
-export const getBewertungByTitle = async (req, res) => {
+export const getBewertungByKennzeichen = async (req, res) => {
   let result = await Bewertung.find({ kennzeichen: req.query.kennzeichen });
   res.status(200).send(result);
 };

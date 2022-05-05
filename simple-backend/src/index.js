@@ -2,16 +2,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import swaggerUi from "swagger-ui-express";
-import {
-  instertOrtskennung,
-  instertBewertungen,
-  instertTuev
-} from "./database.js";
+
 
 
 import bewertungRoutes from "./routes/bewertungRoutes.js";
 import ortskennungRoutes from "./routes/ortskennungRouter.js";
 import tuevRoutes from "./routes/tuevRouter.js";
+import databaseRoutes from "./routes/databaseRouter.js";
 import swaggerDocs from "../swaggerDocs.js";
 
 
@@ -30,6 +27,7 @@ app.use(bodyParser.json());
 app.use("/bewertung", bewertungRoutes);
 app.use("/ortskennung", ortskennungRoutes);
 app.use("/tuev", tuevRoutes);
+app.use("/database", databaseRoutes);
 
 //For swagger
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocs));

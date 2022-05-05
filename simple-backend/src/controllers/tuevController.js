@@ -23,7 +23,7 @@ export const getTuevById = async (req, res) => {
 
 // Return a Tuev by kennzeichen
 
-export const getTuevByTitle = async (req, res) => {
+export const getTuevByKennzeichen = async (req, res) => {
   let result = await Tuev.find({ kennzeichen: req.query.kennzeichen });
   res.status(200).send(result);
 };
@@ -143,5 +143,5 @@ export const newTuevValidators = [
   check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
   check("ort").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
 
-  check("kennzeichen").isLength({max:11}).withMessage("Minimum Length kennzeichen did not match"),
+  check("kennzeichen").isLength({max:11}).withMessage("Maximum Length kennzeichen did not match"),
 ];

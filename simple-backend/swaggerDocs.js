@@ -4,7 +4,6 @@ const swaggerDocs = {
       version: "1.0.0",
       title: "Kennzeichen Backend Service",
       description: "Kennzeichen Backend Service",
-      author: "Alex Lamers",
       license: {
         name: "Von Alexander Lamers, Kilian Sörries und Moritz Stefan Wolf",
       },
@@ -75,7 +74,7 @@ const swaggerDocs = {
             {
               name: "ortskürzel",
               in: "path",
-              description: "Title of the Ortskennung searched for",
+              description: "ortskürzel of the Ortskennung searched for",
               schema: {
                 $ref: "#/definitions/Ortskennung",
               },
@@ -94,7 +93,7 @@ const swaggerDocs = {
       "/ortskennung/add": {
         post: {
           tags: ["Ortskennung"],
-          summary: "Add a new book",
+          summary: "Add a new Ortskennung",
           parameters: [
             {
               name: "ortskennung",
@@ -157,7 +156,7 @@ const swaggerDocs = {
       "/Ortskennung/delete/{id}": {
         delete: {
           tags: ["Ortskennung"],
-          summary: "Delete food by the id from Mongodb",
+          summary: "Delete Ortskennung by the id from Mongodb",
           parameters: [
             {
               name: "id",
@@ -231,7 +230,7 @@ const swaggerDocs = {
             {
               name: "kennzeichen",
               in: "path",
-              description: "Title of the Bewertung searched for",
+              description: "Kennzeichen of the Bewertung searched for",
               schema: {
                 $ref: "#/definitions/Bewertung",
               },
@@ -250,7 +249,7 @@ const swaggerDocs = {
       "/bewertung/add": {
         post: {
           tags: ["Bewertung"],
-          summary: "Add a new book",
+          summary: "Add a new Bewertung",
           parameters: [
             {
               name: "bewertung",
@@ -313,7 +312,7 @@ const swaggerDocs = {
       "/Bewertung/delete/{id}": {
         delete: {
           tags: ["Bewertung"],
-          summary: "Delete food by the id from Mongodb",
+          summary: "Delete Bewertung by the id from Mongodb",
           parameters: [
             {
               name: "id",
@@ -388,7 +387,7 @@ const swaggerDocs = {
             {
               name: "kennzeichen",
               in: "path",
-              description: "Title of the Tuev searched for",
+              description: "kennzeichen of the Tuev searched for",
               schema: {
                 $ref: "#/definitions/Tuev",
               },
@@ -407,7 +406,7 @@ const swaggerDocs = {
       "/tuev/add": {
         post: {
           tags: ["Tuev"],
-          summary: "Add a new book",
+          summary: "Add a new Tuev",
           parameters: [
             {
               name: "tuev",
@@ -470,7 +469,7 @@ const swaggerDocs = {
       "/Tuev/delete/{id}": {
         delete: {
           tags: ["Tuev"],
-          summary: "Delete food by the id from Mongodb",
+          summary: "Delete Tuev by the id from Mongodb",
           parameters: [
             {
               name: "id",

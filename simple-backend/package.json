@@ -7,7 +7,7 @@
     "start": "nodemon -L src/index.js",
     "d-up": "docker-compose up --build"
   },
-  "author": "",
+  "author": "Kilian Sörries, Alexander Lamers, Moritz Wolf",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
