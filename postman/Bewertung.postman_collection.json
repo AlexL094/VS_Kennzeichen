@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "e6dc9341-aacf-4290-8a58-c5a4fef29996",
+		"name": "Bewertung",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:4000/bewertung/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/bewertung/",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"bewertung",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/bewertung/bykennzeichen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/bewertung/search?kennzeichen=KA-1",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"bewertung",
+						"search"
+					],
+					"query": [
+						{
+							"key": "kennzeichen",
+							"value": "KA-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/bewertung/byid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/bewertung/6270f841858ece5b8bd2d86d",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"bewertung",
+						"6270f841858ece5b8bd2d86d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/bewertung/put/byid",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"kennzeichen\": \"KA-1\",\r\n        \"spurhaltung\": 1,\r\n        \"verhalten\": 1,\r\n        \"anmerkungen\": \"keine\",\r\n        \"authorVonBewertung\": \"MW\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/bewertung/put/6270f841858ece5b8bd2d86d",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"bewertung",
+						"put",
+						"6270f841858ece5b8bd2d86d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/bewertung/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"kennzeichen\": \"KA-1\",\r\n        \"spurhaltung\": 1,\r\n        \"verhalten\": 1,\r\n        \"anmerkungen\": \"keine\",\r\n        \"authorVonBewertung\": \"MW\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/bewertung/add",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"bewertung",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/bewertung/delete/byid",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/bewertung/delete/6270f841858ece5b8bd2d86d",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"bewertung",
+						"delete",
+						"6270f841858ece5b8bd2d86d"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

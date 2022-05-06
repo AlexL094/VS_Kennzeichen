@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "6a784276-1382-4a03-8b95-b839c774c6c2",
+		"name": "Database",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:4000/database/delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/database/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"database",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/database/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/database/add",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"database",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

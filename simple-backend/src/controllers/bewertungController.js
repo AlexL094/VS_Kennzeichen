@@ -53,8 +53,10 @@ export const deleteBewertung = async (req, res) => {
   }else{
     let bewertung = await Bewertung.findById(req.params.id);
     if(bewertung != null ){
-        await Bewertung.deleteOne({ id: req.params.id });
-        res.status(200).send('Deleted successful');
+        await Bewertung.deleteOne({ id: req.params.id }).
+          then(res.status(200).
+            send('Deleted successful')
+        );
     }else{
       res.status(400).send({error: 'This Element is not in the Database'});
     }

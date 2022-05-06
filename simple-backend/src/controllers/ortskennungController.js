@@ -52,8 +52,10 @@ export const deleteOrtskennung = async (req, res) => {
   }else{
     let ortskennung = await Ortskennung.findById(req.params.id);
     if(ortskennung != null ){
-        await Ortskennung.deleteOne({ id: req.params.id });
-        res.status(200).send('Deleted successful');
+        await Ortskennung.deleteOne({ id: req.params.id }).
+        then(res.status(200).
+          send('Deleted successful')
+        );
     }else{
       res.status(400).send({error: 'This Element is not in the Database'});
     }

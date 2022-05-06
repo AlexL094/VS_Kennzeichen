@@ -54,8 +54,10 @@ export const deleteTuev = async (req, res) => {
   }else{
     let tuev = await Tuev.findById(req.params.id);
     if(tuev != null ){
-        await Tuev.deleteOne({ id: req.params.id });
-        res.status(200).send('Deleted successful');
+        await Tuev.deleteOne({ id: req.params.id })
+          .then(res.status(200).
+            send('Deleted successful')
+          );
     }else{
       res.status(400).send({error: 'This Element is not in the Database'});
     }
@@ -121,7 +123,7 @@ export const putTuevValidators = [
   check("letztePrüfung").isString().withMessage("letztePrüfung field required"),
 
   check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
-  check("ort").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
+  check("ort").isLength({min:1}).withMessage("Minimum Length ort did not match"),
 
   check("kennzeichen").isLength({max:11}).withMessage("Minimum Length kennzeichen did not match"),
 
@@ -141,7 +143,7 @@ export const newTuevValidators = [
   check("letztePrüfung").isString().withMessage("letztePrüfung field required"),
 
   check("kennzeichen").isLength({min:1}).withMessage("Minimum Length kennzeichen did not match"),
-  check("ort").isLength({min:1}).withMessage("Minimum Length anmerkungen did not match"),
+  check("ort").isLength({min:1}).withMessage("Minimum Length ort did not match"),
 
   check("kennzeichen").isLength({max:11}).withMessage("Maximum Length kennzeichen did not match"),
 ];

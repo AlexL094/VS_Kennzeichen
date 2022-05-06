@@ -31,7 +31,7 @@ const swaggerDocs = {
       "/ortskennung": {
         get: {
           tags: ["Ortskennung"],
-          summary: "Get all ortskennungen from the system",
+          summary: "Get all Ortskennungen from the system",
           responses: {
             200: {
               description: "OK",
@@ -159,7 +159,7 @@ const swaggerDocs = {
         },
         
       },
-      "/Ortskennung/delete/{id}": {
+      "/ortskennung/delete/{id}": {
         delete: {
           tags: ["Ortskennung"],
           summary: "Delete Ortskennung by the id from Mongodb",
@@ -193,7 +193,7 @@ const swaggerDocs = {
       "/bewertung": {
         get: {
           tags: ["Bewertung"],
-          summary: "Get all bewertungen from the system",
+          summary: "Get all Bewertungen from the system",
           responses: {
             200: {
               description: "OK",
@@ -315,7 +315,7 @@ const swaggerDocs = {
         },
         
       },
-      "/Bewertung/delete/{id}": {
+      "/bewertung/delete/{id}": {
         delete: {
           tags: ["Bewertung"],
           summary: "Delete Bewertung by the id from Mongodb",
@@ -350,7 +350,7 @@ const swaggerDocs = {
       "/tuev": {
         get: {
           tags: ["Tuev"],
-          summary: "Get all tueven from the system",
+          summary: "Get all Tuevs from the system",
           responses: {
             200: {
               description: "OK",
@@ -472,7 +472,7 @@ const swaggerDocs = {
         },
         
       },
-      "/Tuev/delete/{id}": {
+      "/tuev/delete/{id}": {
         delete: {
           tags: ["Tuev"],
           summary: "Delete Tuev by the id from Mongodb",

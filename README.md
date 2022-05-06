@@ -18,8 +18,8 @@ backend connection via fetch.
 - backend: `cd simple-backend && npm run start`
 - all containers (frontend, backend, mongo): `cd simple-backend && npm run d-up`
 
-
 _______________________________________________________________________
+Um das Testen der API zu vereinfachen, haben wir unsere Postman Collections exportiert. Es sollte möglich sein, dies zu Importieren._______________________________________________________________________
 
 Um die Datenbank initial zu befüllen, kann der folgende Befehl ausgeführt werden
 - POST /database/add
@@ -39,12 +39,14 @@ _______________________________________________________________________
 - POST /bewertung/add
 - DELETE /bewertung/delete/{id}
 
+
 - GET /tuev
 - GET /tuev/{id}
 - GET /tuev/search?kennzeichen={kennzeichen}
 - PUT /tuev/put/{id}
 - POST /tuev/add
 - DELETE /tuev/delete/{id}
+
 
 - GET /ortskennung
 - GET /ortskennung/{id}

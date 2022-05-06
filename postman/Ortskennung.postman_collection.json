@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "4db29cb4-61a3-4781-9494-547ca84fecda",
+		"name": "Ortskennung",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:4000/ortskennung/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/ortskennung/",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"ortskennung",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/ortskennung/byortskürzel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/ortskennung/search?ortskürzel=Z",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"ortskennung",
+						"search"
+					],
+					"query": [
+						{
+							"key": "ortskürzel",
+							"value": "Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/ortskennung/byid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/ortskennung/62710efae0405c3982579ab6",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"ortskennung",
+						"62710efae0405c3982579ab6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/ortskennung/put/byid",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ortskürzel\": \"A\",\r\n    \"landkreis\": \"L\",\r\n    \"bundesland\": \"BBBB\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/ortskennung/put/62712235bf50ca0e42412123",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"ortskennung",
+						"put",
+						"62712235bf50ca0e42412123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/ortskennung/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ortskürzel\":\"KA\",\r\n    \"landkreis\":\"Karlsruhe\",\r\n    \"bundesland\":\"Baden\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/ortskennung/add",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"ortskennung",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:4000/ortskennung/delete/byid",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/ortskennung/delete/62712235bf50ca0e42412123",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"ortskennung",
+						"delete",
+						"62712235bf50ca0e42412123"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
